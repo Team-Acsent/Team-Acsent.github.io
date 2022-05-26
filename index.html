@@ -6,9 +6,13 @@
   </head>
   <body>
     <h1>Chess with voice</h1>
-    <p>Click the blue button in the lower right to activate Alan.</p>
-    <p>Try saying, "Hello world."</p>
-    <p>Alan will respond with either "hello" or "hi there."</p>
+    <h2>The chess part</h2>
+      <p>This is the chess board after white plays e4 and black plays c5.</p>
+      <pre id="ascii-board"></pre>
+    <h2>The voice part</h2>
+      <p>Click the blue button in the lower right to activate Alan.</p>
+      <p>Try saying, "Hello world."</p>
+      <p>Alan will respond with either "hello" or "hi there."</p>
     <div class="alan-btn"></div>
     <script type="text/javascript" src="https://studio.alan.app/web/lib/alan_lib.min.js"></script>
     <script>
@@ -20,7 +24,8 @@
         }
       },
       rootEl: document.getElementById("alan-btn"),
-    });
-  </script>
+      });
+    </script>
+    <script type="module" src="myChess.js"></script>
   </body>
 </html>
