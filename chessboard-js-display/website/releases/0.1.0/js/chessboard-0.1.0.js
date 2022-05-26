@@ -433,7 +433,7 @@ var expandConfig = function() {
   if (cfg.hasOwnProperty('pieceTheme') !== true ||
       (typeof cfg.pieceTheme !== 'string' &&
        typeof cfg.pieceTheme !== 'function')) {
-    cfg.pieceTheme = '/chessboard-js-display/lib/website/img/chesspieces/wikipedia/{piece}.png';
+    cfg.pieceTheme = 'img/chesspieces/wikipedia/{piece}.png';
   }
 
   // animation speeds
