@@ -6,5 +6,4 @@ var board = document.getElementById("ascii-board");
 chess.move("e4");
 chess.move("c5");
 board.innerHTML = chess.ascii();
-console.log(chess.ascii);
 console.log(chess.pgn())
