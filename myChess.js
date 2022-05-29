@@ -11,6 +11,12 @@ var board = null
 var game = new Chess()
 var whiteSquareGrey = '#a9a9a9'
 var blackSquareGrey = '#696969'
+var notn = {"": "", "pawn": "", "knight": "N", "bishop": "B", "rook": "R", "queen": "Q", "king": "K",
+  "a" : "a", "b": "b", "c" : "c", "d": "d", "e" : "e", "f": "f", "g" : "g", "h": "h",
+  "alpha": "a", "bravo": "b", "charlie": "c", "delta": "d", "echo": "e", "foxtrot": "f", "golf": "g", "hotel": "h",
+  "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8,
+  "E4": "e4", "F3": "f3"
+};
 
 function removeGreySquares () {
   $('#myBoard .square-55d63').css('background', '')
@@ -89,3 +95,50 @@ var config = {
   onSnapEnd: onSnapEnd
 }
 board = Chessboard('myBoard', config)
+
+export function moveFR(piece, file, rank) {
+  piece = notn[piece.toLowerCase()];
+  file = notn[file.toLowerCase()];
+  rank = notn[rank];
+  console.log(piece + file + rank);
+  var theMove = game.move(piece + file + rank);
+  board.position(game.fen())
+  return theMove;
+}
+
+export function moveS(piece, square) {
+  piece = notn[piece.toLowerCase()];
+  square = square.toLowerCase();
+  console.log(piece + square);
+  var theMove = game.move(piece + square);
+  board.position(game.fen())
+  return theMove;
+}
+
+export function takeFR(piece, file, rank) {
+  piece = notn[piece.toLowerCase()];
+  file = notn[file.toLowerCase()];
+  rank = notn[rank];
+  console.log(piece + "x" + file + rank);
+  var theMove = game.move(piece + "x" + file + rank);
+  board.position(game.fen())
+  return theMove;
+}
+
+export function takeS(piece, square) {
+  piece = notn[piece.toLowerCase()];
+  square = square.toLowerCase();
+  console.log(piece + "x" + square);
+  var theMove = game.move(piece + "x" + square);
+  board.position(game.fen())
+  return theMove;
+}
+
+export function undo(halfUndoes) {
+  for (var i=0; i < halfUndoes-1; i++) {
+    game.undo();
+  }
+  var theMove = game.undo();
+  board.position(game.fen())
+  return theMove;
+}
