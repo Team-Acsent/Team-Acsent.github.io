@@ -96,48 +96,63 @@ var config = {
 }
 board = Chessboard('myBoard', config)
 
-export function moveFR(piece, file, rank) {
-  piece = notn[piece.toLowerCase()];
-  file = notn[file.toLowerCase()];
-  rank = notn[rank];
-  console.log(piece + file + rank);
-  var theMove = game.move(piece + file + rank);
-  board.position(game.fen())
-  return theMove;
+export function moveFR(piece, file, rank, isCapture) {
+  var square = notn[file.toLowerCase()] + notn[rank];
+  return moveS(piece, square, isCapture);
 }
 
-export function moveS(piece, square) {
+export function moveS(piece, square, isCapture) {
   piece = notn[piece.toLowerCase()];
   square = square.toLowerCase();
   console.log(piece + square);
-  var theMove = game.move(piece + square);
-  board.position(game.fen())
-  return theMove;
-}
-
-export function takeFR(piece, file, rank) {
-  piece = notn[piece.toLowerCase()];
-  file = notn[file.toLowerCase()];
-  rank = notn[rank];
-  console.log(piece + "x" + file + rank);
-  var theMove = game.move(piece + "x" + file + rank);
-  board.position(game.fen())
-  return theMove;
-}
-
-export function takeS(piece, square) {
-  piece = notn[piece.toLowerCase()];
-  square = square.toLowerCase();
-  console.log(piece + "x" + square);
-  var theMove = game.move(piece + "x" + square);
-  board.position(game.fen())
-  return theMove;
-}
-
-export function undo(halfUndoes) {
-  for (var i=0; i < halfUndoes-1; i++) {
-    game.undo();
+  var theMove;
+  if (isCapture) {
+    theMove = game.move(piece + "x" + square);
+  } else {
+    theMove = game.move(piece + square);
   }
+  board.position(game.fen())
+  return theMove;
+}
+
+export function castle(side) {
+  var result;
+  if (side === "kingside" || side === "short") {
+    console.log("O-O");
+    if (game.move("O-O")) {
+      board.position(game.fen())
+      result = "k";
+    }
+  } else if (side === "queenside" || side === "long") {
+    console.log("O-O-O");
+    if (game.move("O-O-O")) {
+      board.position(game.fen())
+      result = "q";
+    }
+  } else {
+    console.log(side)
+    if (game.moves().includes('O-O')) {
+      if (game.moves().includes("O-O-O")) {
+        result = "kq";
+      } else {
+        console.log("O-O");
+        game.move("O-O");
+        board.position(game.fen())
+        result = "k";
+      }
+    } else {
+      if (game.moves().includes("O-O-O")) {
+        console.log("O-O-O");
+        game.move("O-O-O");
+        board.position(game.fen())
+        result = "q";
+      }
+    }
+  }
+  return result;
+}
+
+export function undo() {
   var theMove = game.undo();
   board.position(game.fen())
   return theMove;
