@@ -49,6 +49,14 @@ onCommand: function (commandData) {
     speakUndo(lastUndo);
   }
 
+  if(commandData.command === "wait") {
+    wait(commandData.time);
+  }
+
+  if(commandData.command === "deactivate") {
+    alanBtnInstance.deactivate();
+  }
+
 },
 rootEl: document.getElementById("alan-btn"),
 });
@@ -85,4 +93,15 @@ function speakUndo(lastUndo) {
     }
     console.log(result);
   });
+}
+
+function wait(seconds) {
+  setTimeout(activate, seconds*1000);
+  function activate (time) {
+    if (alanBtnInstance.isActive()) {
+      setTimeout(activate, 500); //the button may automatically turn off a bit later --> check again in 500 ms
+    }
+    alanBtnInstance.activate();
+    setTimeout(alanBtnInstance.activate, 500); //check once more just in case (yes this is needed, at least for wait 10 seconds)
+  }
 }
