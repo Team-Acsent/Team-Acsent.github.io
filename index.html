@@ -17,31 +17,85 @@
       body {background-color: rgb(146, 146, 146);}
     </style>
     </head> 
+
   <body>
-    <h2 style="text-align:left; font-family:Georgia,serif; color:white;">Chess With Voice</h2>
+    <h2 style="text-align:left; font-family:Georgia,serif; color:white; position:relative; left:400px; top:200px;">Chess<br>With<br>Voice</h2>
     <!-- <header>The chess part</header>
       <p>This is the chess board after white plays e4 and black plays c5.</p>
     <pre id="ascii-board"></pre>
     <h2>The display part</h2>
       <p>Here is a chess board in the starting position. You can only make legal chess moves. When you hover over a piece, the legal moves will be highlighted.</p>
     -->
-    <div class="row">
-      <div class="col-sm-4" align="right">Prison</div>
-      <div class="col-sm-4" align="right">Timer</div>
-      <div class="col-sm-4" align="right">Settings</div>
-    <div class ="row"></div>
-    <div class ="row">
-      <div id="myBoard"></div>
+    <div class="container">
+      <div class="col-lg-4"> </div>
+      <div class="col-lg-4">Prison</div>
+      <div class="col-lg-4"> </div>
     </div>
-    <div style="margin-right:10px; width:80px; height:80px; border:none;"></div>
-    <p1 align="left">Key<br>A - Alpha<br>B - Bravo<br>C - Charlie<br>D - Delta<br>E - Echo<br>F - Foxtrot<br>G - Golf<br>H - Hotel<br>
-    </p1>
+
+    <div class="container">
+      <div class="col-lg-4"> </div>
+      <div class="col-lg-4">
+        <img src="https://lh3.googleusercontent.com/u6auk-Ezp6wyY74rFOGNpTBjxwqrBfr8grBsuxD_xoxkTbubl0VSvLMKrxcrf025P8xE27rgUbotkhvOti-5Qwrubvi9N_mtfk1pA1_X1DnvQp8ix96QyLIOIFdqAEYJjyUFrJROMw=s225-p-k" width="100" height="50" alt="Prison">
+      </div>
+      <div class="col-lg-3">Timer</div>
+      <div class="col-lg-1"> 
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown" style="position:relative; right:50px;">Settings
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+              <li role="presentation"><a role="menuitem" tabinex="-1" href"#">Blindfold Chess</a></li>
+              <li role="presentation"><a role="menuitem" tabinex="-1" href"#">Difficulty</a></li>
+            </ul>
+        </div>
+          
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="col-lg-4" style="position:relative; left:240px; top:200px;">Key<br>A - Alpha<br>B - Bravo<br>C - Charlie<br>D - Delta<br>E - Echo<br>F - Foxtrot<br>
+          G - Golf<br>H - Hotel<br>
+        </div>
+        <div class="col-lg-8" id="myBoard">
+        </div>
+        <div class="col">
+          xx:xx min
+        </div>
+        <div style="height:100px;width:180px;border:1px solid #4e4e4e;font:16px Arial, Serif;overflow:auto;">
+          Example<br>
+          Scroll box<br>
+          1: e4 e5<br>
+          2: Nf4 Nc3<br>
+          3: d2 d3<br>
+          4: Bc1 Bf4<br>
+        </div>
+        <div class="col" style="position:relative; top:300px; font-family:Verdana, Geneva, Tahoma, sans-serif">
+          White's Move
+        </div>
+    </div>
+
+
+
+    <div class="container">
+      <div class="col-lg-4"> </div>
+      <div class="col-lg-4">Prison</div>
+      <div class="col-lg-3">Timer</div>
+      <div class="col-lg-1" class="text-right"> </div>
+      </div>
+    </div>
+ 
     
-    <div class="col-sm-4">Prison</div>
-    <h2>Instructions</h2>
-      <p>Click the blue button in the lower right to activate Alan.</p>
-      <p>Try saying, "Hello world."</p>
-      <p>Alan will respond with either "hello" or "hi there."</p>
+    <div class="container">
+      <div class="col-lg-4"> </div>
+      <div class="col-lg-4">
+        <img src="https://lh3.googleusercontent.com/u6auk-Ezp6wyY74rFOGNpTBjxwqrBfr8grBsuxD_xoxkTbubl0VSvLMKrxcrf025P8xE27rgUbotkhvOti-5Qwrubvi9N_mtfk1pA1_X1DnvQp8ix96QyLIOIFdqAEYJjyUFrJROMw=s225-p-k" width="100" height="50" alt="Prison">
+      </div>
+      <div class="col-lg-4"></div>
+    </div>
+    <div class="row"></div>
+    <header>Instructions</header>
+      <p>Click the blue button in the lower right to activate Alan. <br>
+        Say your move, and Alan will pick up your voice. <br>
+        Alan will respond with your move or provide feedback.</p>
     <div class="alan-btn"></div>
     
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
